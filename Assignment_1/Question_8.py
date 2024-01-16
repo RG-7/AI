@@ -10,6 +10,7 @@ class Resturant:
     print("The resturant is open!")
 
 res = Resturant("The Street Cafe","Indian")
+print(res.resturant_name)
+print(res.cuisine_type)
 res.describe_resturant()
 res.open_resturant()
-
