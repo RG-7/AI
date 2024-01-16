@@ -1,3 +1,6 @@
+# Assignment 1
+# January 16, 2004
+
 # Question 8
 # (a)
 class Resturant:
