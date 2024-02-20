@@ -1,7 +1,6 @@
 # Day 7
 # February 20, 2024
 # Assignment 3
-
 import copy
 from collections import deque
 
@@ -18,7 +17,7 @@ def generate_children(s):
                     l.append(s1)
     return l
 
-def dfs(initial_state):
+def dfs(initial_state, goal_state):
     stack = [initial_state]
     visited = set()
     while stack:
@@ -26,9 +25,12 @@ def dfs(initial_state):
         if tuple(map(tuple, current_state)) not in visited:
             print("Current state:", current_state)
             visited.add(tuple(map(tuple, current_state)))
+            if current_state == goal_state:
+                return current_state
             children = generate_children(current_state)
-            stack.extend(children[::-1])  
-def bfs(initial_state):
+            stack.extend(children[::-1])
+
+def bfs(initial_state, goal_state):
     queue = deque([initial_state])
     visited = set()
     while queue:
@@ -36,16 +38,23 @@ def bfs(initial_state):
         if tuple(map(tuple, current_state)) not in visited:
             print("Current state:", current_state)
             visited.add(tuple(map(tuple, current_state)))
+            if current_state == goal_state:
+                return current_state
             children = generate_children(current_state)
             queue.extend(children)
 
-initial_state = [[1, 2, 3], [], []]
+initial_state = [[1,2], [3], []]
+goal_state = [[], [2,3], [1]]
 
 print("Initial state:", initial_state)
+print("Goal state:", goal_state)
+
 print("\nDFS:")
-dfs(initial_state)
+result_dfs = dfs(initial_state, goal_state)
+print("Result_DFS:", result_dfs)
 
 print("\nBFS:")
-bfs(initial_state)
+result_bfs = bfs(initial_state, goal_state)
+print("Result_BFS:", result_bfs)
 
 # Thanks! :)
